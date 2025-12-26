@@ -1,0 +1,653 @@
+{
+  "mcps": [
+    {
+      "id": "filesystem",
+      "name": "Filesystem",
+      "description": "Read, write, and manage files on your local filesystem with secure sandboxing",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/workspace"],
+      "env": {},
+      "envVars": [],
+      "category": "core",
+      "docsUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem"
+    },
+    {
+      "id": "github",
+      "name": "GitHub",
+      "description": "Connect AI assistants to GitHub - manage repos, issues, PRs, and workflows through natural language",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": ""
+      },
+      "envVars": [
+        {
+          "name": "GITHUB_PERSONAL_ACCESS_TOKEN",
+          "description": "Your GitHub personal access token with repo access",
+          "required": true
+        }
+      ],
+      "category": "dev",
+      "docsUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/github"
+    },
+    {
+      "id": "gitlab",
+      "name": "GitLab",
+      "description": "Interact with GitLab repositories, issues, merge requests, and CI/CD",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-gitlab"],
+      "env": {
+        "GITLAB_PERSONAL_ACCESS_TOKEN": "",
+        "GITLAB_API_URL": "https://gitlab.com/api/v4"
+      },
+      "envVars": [
+        {
+          "name": "GITLAB_PERSONAL_ACCESS_TOKEN",
+          "description": "Your GitLab personal access token",
+          "required": true
+        },
+        {
+          "name": "GITLAB_API_URL",
+          "description": "GitLab API URL (for self-hosted instances)",
+          "required": false,
+          "default": "https://gitlab.com/api/v4"
+        }
+      ],
+      "category": "dev",
+      "docsUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/gitlab"
+    },
+    {
+      "id": "slack",
+      "name": "Slack",
+      "description": "Read and send messages, manage channels in Slack workspaces",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-slack"],
+      "env": {
+        "SLACK_BOT_TOKEN": "",
+        "SLACK_TEAM_ID": ""
+      },
+      "envVars": [
+        {
+          "name": "SLACK_BOT_TOKEN",
+          "description": "Slack bot token (starts with xoxb-)",
+          "required": true
+        },
+        {
+          "name": "SLACK_TEAM_ID",
+          "description": "Your Slack workspace/team ID",
+          "required": true
+        }
+      ],
+      "category": "data",
+      "docsUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/slack"
+    },
+    {
+      "id": "google-drive",
+      "name": "Google Drive",
+      "description": "Search, read, and manage files in Google Drive",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-gdrive"],
+      "env": {
+        "GDRIVE_CLIENT_ID": "",
+        "GDRIVE_CLIENT_SECRET": ""
+      },
+      "envVars": [
+        {
+          "name": "GDRIVE_CLIENT_ID",
+          "description": "Google OAuth Client ID",
+          "required": true
+        },
+        {
+          "name": "GDRIVE_CLIENT_SECRET",
+          "description": "Google OAuth Client Secret",
+          "required": true
+        }
+      ],
+      "category": "data",
+      "docsUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/gdrive"
+    },
+    {
+      "id": "postgres",
+      "name": "PostgreSQL",
+      "description": "Query and manage PostgreSQL databases",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres"],
+      "env": {
+        "POSTGRES_CONNECTION_STRING": ""
+      },
+      "envVars": [
+        {
+          "name": "POSTGRES_CONNECTION_STRING",
+          "description": "PostgreSQL connection string (e.g., postgresql://user:pass@host:5432/db)",
+          "required": true
+        }
+      ],
+      "category": "data",
+      "docsUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/postgres"
+    },
+    {
+      "id": "sqlite",
+      "name": "SQLite",
+      "description": "Query and manage SQLite databases",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sqlite", "--db-path", "/path/to/database.db"],
+      "env": {},
+      "envVars": [],
+      "category": "data",
+      "docsUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/sqlite"
+    },
+    {
+      "id": "brave-search",
+      "name": "Brave Search",
+      "description": "Search the web using Brave Search API",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": {
+        "BRAVE_API_KEY": ""
+      },
+      "envVars": [
+        {
+          "name": "BRAVE_API_KEY",
+          "description": "Brave Search API key",
+          "required": true
+        }
+      ],
+      "category": "ai",
+      "docsUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/brave-search"
+    },
+    {
+      "id": "fetch",
+      "name": "Fetch",
+      "description": "Fetch and convert web content to markdown for AI consumption",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-fetch"],
+      "env": {},
+      "envVars": [],
+      "category": "core",
+      "docsUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/fetch"
+    },
+    {
+      "id": "puppeteer",
+      "name": "Puppeteer",
+      "description": "Browser automation, screenshots, and web scraping",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-puppeteer"],
+      "env": {},
+      "envVars": [],
+      "category": "dev",
+      "docsUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/puppeteer"
+    },
+    {
+      "id": "memory",
+      "name": "Memory",
+      "description": "Persistent memory storage using a knowledge graph",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"],
+      "env": {},
+      "envVars": [],
+      "category": "ai",
+      "docsUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/memory"
+    },
+    {
+      "id": "sequential-thinking",
+      "name": "Sequential Thinking",
+      "description": "Dynamic problem-solving through thought sequences",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
+      "env": {},
+      "envVars": [],
+      "category": "ai",
+      "docsUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking"
+    },
+    {
+      "id": "everart",
+      "name": "EverArt",
+      "description": "AI image generation using EverArt API",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-everart"],
+      "env": {
+        "EVERART_API_KEY": ""
+      },
+      "envVars": [
+        {
+          "name": "EVERART_API_KEY",
+          "description": "EverArt API key",
+          "required": true
+        }
+      ],
+      "category": "ai",
+      "docsUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/everart"
+    },
+    {
+      "id": "sentry",
+      "name": "Sentry",
+      "description": "Access Sentry issues and error tracking data",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sentry"],
+      "env": {
+        "SENTRY_AUTH_TOKEN": "",
+        "SENTRY_ORG": ""
+      },
+      "envVars": [
+        {
+          "name": "SENTRY_AUTH_TOKEN",
+          "description": "Sentry authentication token",
+          "required": true
+        },
+        {
+          "name": "SENTRY_ORG",
+          "description": "Sentry organization slug",
+          "required": true
+        }
+      ],
+      "category": "dev",
+      "docsUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/sentry"
+    },
+    {
+      "id": "time",
+      "name": "Time",
+      "description": "Get current time and timezone conversions",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-time"],
+      "env": {},
+      "envVars": [],
+      "category": "core",
+      "docsUrl": "https://github.com/modelcontextprotocol/servers/tree/main/src/time"
+    },
+    {
+      "id": "markitdown",
+      "name": "Markitdown",
+      "description": "Convert various file formats (PDF, Word, Excel, images, audio) to Markdown",
+      "command": "npx",
+      "args": ["-y", "@microsoft/markitdown-mcp"],
+      "env": {},
+      "envVars": [],
+      "category": "core",
+      "docsUrl": "https://github.com/microsoft/markitdown"
+    },
+    {
+      "id": "context7",
+      "name": "Context7",
+      "description": "Up-to-date code documentation for any prompt",
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp"],
+      "env": {},
+      "envVars": [],
+      "category": "ai",
+      "docsUrl": "https://github.com/upstash/context7"
+    },
+    {
+      "id": "playwright",
+      "name": "Playwright",
+      "description": "Automate web browsers using accessibility trees for testing and data extraction",
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@latest"],
+      "env": {},
+      "envVars": [],
+      "category": "dev",
+      "docsUrl": "https://github.com/microsoft/playwright-mcp"
+    },
+    {
+      "id": "notion",
+      "name": "Notion",
+      "description": "Official MCP server for Notion API - read and manage Notion pages and databases",
+      "command": "npx",
+      "args": ["-y", "@notionhq/notion-mcp-server"],
+      "env": {
+        "NOTION_API_KEY": ""
+      },
+      "envVars": [
+        {
+          "name": "NOTION_API_KEY",
+          "description": "Notion integration token (starts with secret_)",
+          "required": true
+        }
+      ],
+      "category": "data",
+      "docsUrl": "https://github.com/makenotion/notion-mcp-server"
+    },
+    {
+      "id": "supabase",
+      "name": "Supabase",
+      "description": "MCP server for interacting with Supabase platform - database, auth, storage",
+      "command": "npx",
+      "args": ["-y", "@supabase/mcp-server-supabase"],
+      "env": {
+        "SUPABASE_ACCESS_TOKEN": ""
+      },
+      "envVars": [
+        {
+          "name": "SUPABASE_ACCESS_TOKEN",
+          "description": "Supabase access token from dashboard",
+          "required": true
+        }
+      ],
+      "category": "data",
+      "docsUrl": "https://github.com/supabase-community/supabase-mcp"
+    },
+    {
+      "id": "stripe",
+      "name": "Stripe",
+      "description": "MCP server integrating with Stripe - tools for customers, products, payments, and more",
+      "command": "npx",
+      "args": ["-y", "@stripe/mcp"],
+      "env": {
+        "STRIPE_SECRET_KEY": ""
+      },
+      "envVars": [
+        {
+          "name": "STRIPE_SECRET_KEY",
+          "description": "Stripe secret key (starts with sk_)",
+          "required": true
+        }
+      ],
+      "category": "data",
+      "docsUrl": "https://github.com/stripe/stripe-mcp"
+    },
+    {
+      "id": "mongodb",
+      "name": "MongoDB",
+      "description": "MongoDB Model Context Protocol Server for database operations",
+      "command": "npx",
+      "args": ["-y", "@mongodb-js/mongodb-mcp-server"],
+      "env": {
+        "MONGODB_URI": ""
+      },
+      "envVars": [
+        {
+          "name": "MONGODB_URI",
+          "description": "MongoDB connection string",
+          "required": true
+        }
+      ],
+      "category": "data",
+      "docsUrl": "https://github.com/mongodb-js/mongodb-mcp-server"
+    },
+    {
+      "id": "firecrawl",
+      "name": "Firecrawl",
+      "description": "Extract web data with Firecrawl - crawl, scrape and convert websites to clean data",
+      "command": "npx",
+      "args": ["-y", "@anthropic/firecrawl-mcp-server"],
+      "env": {
+        "FIRECRAWL_API_KEY": ""
+      },
+      "envVars": [
+        {
+          "name": "FIRECRAWL_API_KEY",
+          "description": "Firecrawl API key",
+          "required": true
+        }
+      ],
+      "category": "data",
+      "docsUrl": "https://github.com/mendableai/firecrawl"
+    },
+    {
+      "id": "neon",
+      "name": "Neon",
+      "description": "MCP server for interacting with Neon serverless Postgres - manage databases and branches",
+      "command": "npx",
+      "args": ["-y", "@neondatabase/mcp-server-neon"],
+      "env": {
+        "NEON_API_KEY": ""
+      },
+      "envVars": [
+        {
+          "name": "NEON_API_KEY",
+          "description": "Neon API key from console",
+          "required": true
+        }
+      ],
+      "category": "data",
+      "docsUrl": "https://github.com/neondatabase/mcp-server-neon"
+    },
+    {
+      "id": "todoist",
+      "name": "Todoist",
+      "description": "Connect AI agents to Todoist for task and project management",
+      "command": "npx",
+      "args": ["-y", "@doist/todoist-mcp-server"],
+      "env": {
+        "TODOIST_API_TOKEN": ""
+      },
+      "envVars": [
+        {
+          "name": "TODOIST_API_TOKEN",
+          "description": "Todoist API token from settings",
+          "required": true
+        }
+      ],
+      "category": "data",
+      "docsUrl": "https://github.com/Doist/todoist-mcp-server"
+    },
+    {
+      "id": "huggingface",
+      "name": "Hugging Face",
+      "description": "Access Hugging Face models, datasets, Spaces, papers, and collections",
+      "command": "npx",
+      "args": ["-y", "@huggingface/mcp-server"],
+      "env": {
+        "HF_TOKEN": ""
+      },
+      "envVars": [
+        {
+          "name": "HF_TOKEN",
+          "description": "Hugging Face access token",
+          "required": false
+        }
+      ],
+      "category": "ai",
+      "docsUrl": "https://github.com/huggingface/mcp-server"
+    },
+    {
+      "id": "elasticsearch",
+      "name": "Elasticsearch",
+      "description": "Connect to Elasticsearch data and indices - search queries, mappings, ES|QL support",
+      "command": "npx",
+      "args": ["-y", "@elastic/mcp-server-elasticsearch"],
+      "env": {
+        "ELASTICSEARCH_URL": "",
+        "ELASTICSEARCH_API_KEY": ""
+      },
+      "envVars": [
+        {
+          "name": "ELASTICSEARCH_URL",
+          "description": "Elasticsearch cluster URL",
+          "required": true
+        },
+        {
+          "name": "ELASTICSEARCH_API_KEY",
+          "description": "Elasticsearch API key",
+          "required": true
+        }
+      ],
+      "category": "data",
+      "docsUrl": "https://github.com/elastic/elasticsearch-mcp-server"
+    },
+    {
+      "id": "chroma",
+      "name": "Chroma",
+      "description": "Vector database for AI - create collections, store embeddings, and retrieve with semantic search",
+      "command": "npx",
+      "args": ["-y", "@chroma-core/chroma-mcp"],
+      "env": {},
+      "envVars": [],
+      "category": "ai",
+      "docsUrl": "https://github.com/chroma-core/chroma-mcp"
+    },
+    {
+      "id": "terraform",
+      "name": "Terraform",
+      "description": "Generate accurate Terraform and automate workflows for HCP Terraform and Terraform Enterprise",
+      "command": "npx",
+      "args": ["-y", "@hashicorp/terraform-mcp-server"],
+      "env": {
+        "TF_CLOUD_TOKEN": ""
+      },
+      "envVars": [
+        {
+          "name": "TF_CLOUD_TOKEN",
+          "description": "Terraform Cloud API token",
+          "required": false
+        }
+      ],
+      "category": "dev",
+      "docsUrl": "https://github.com/hashicorp/terraform-mcp-server"
+    },
+    {
+      "id": "azure-devops",
+      "name": "Azure DevOps",
+      "description": "Interact with Azure DevOps - repositories, work items, builds, releases, and code search",
+      "command": "npx",
+      "args": ["-y", "@microsoft/azure-devops-mcp"],
+      "env": {
+        "AZURE_DEVOPS_ORG_URL": "",
+        "AZURE_DEVOPS_PAT": ""
+      },
+      "envVars": [
+        {
+          "name": "AZURE_DEVOPS_ORG_URL",
+          "description": "Azure DevOps organization URL (e.g., https://dev.azure.com/yourorg)",
+          "required": true
+        },
+        {
+          "name": "AZURE_DEVOPS_PAT",
+          "description": "Azure DevOps Personal Access Token",
+          "required": true
+        }
+      ],
+      "category": "dev",
+      "docsUrl": "https://github.com/microsoft/azure-devops-mcp"
+    },
+    {
+      "id": "apify",
+      "name": "Apify",
+      "description": "Access Apify marketplace for web scraping and data extraction tools",
+      "command": "npx",
+      "args": ["-y", "@apify/mcp-server"],
+      "env": {
+        "APIFY_TOKEN": ""
+      },
+      "envVars": [
+        {
+          "name": "APIFY_TOKEN",
+          "description": "Apify API token",
+          "required": true
+        }
+      ],
+      "category": "data",
+      "docsUrl": "https://github.com/apify/mcp-server"
+    },
+    {
+      "id": "netdata",
+      "name": "Netdata",
+      "description": "AI-powered infrastructure monitoring with real-time metrics, logs, alerts, and ML anomaly detection",
+      "command": "npx",
+      "args": ["-y", "@netdata/mcp-server"],
+      "env": {
+        "NETDATA_URL": "",
+        "NETDATA_API_TOKEN": ""
+      },
+      "envVars": [
+        {
+          "name": "NETDATA_URL",
+          "description": "Netdata instance URL",
+          "required": true
+        },
+        {
+          "name": "NETDATA_API_TOKEN",
+          "description": "Netdata API token",
+          "required": false
+        }
+      ],
+      "category": "dev",
+      "docsUrl": "https://github.com/netdata/mcp-server"
+    },
+    {
+      "id": "monday",
+      "name": "Monday.com",
+      "description": "MCP server for monday.com integration - manage boards, items, and workflows",
+      "command": "npx",
+      "args": ["-y", "@mondaycom/mcp-server"],
+      "env": {
+        "MONDAY_API_TOKEN": ""
+      },
+      "envVars": [
+        {
+          "name": "MONDAY_API_TOKEN",
+          "description": "monday.com API token",
+          "required": true
+        }
+      ],
+      "category": "data",
+      "docsUrl": "https://github.com/mondaycom/mcp-server"
+    },
+    {
+      "id": "atlassian",
+      "name": "Atlassian",
+      "description": "Connect Jira and Confluence with your LLM - manage issues, pages, and spaces",
+      "command": "npx",
+      "args": ["-y", "@atlassian/mcp-server"],
+      "env": {
+        "ATLASSIAN_SITE_URL": "",
+        "ATLASSIAN_EMAIL": "",
+        "ATLASSIAN_API_TOKEN": ""
+      },
+      "envVars": [
+        {
+          "name": "ATLASSIAN_SITE_URL",
+          "description": "Atlassian site URL (e.g., https://yoursite.atlassian.net)",
+          "required": true
+        },
+        {
+          "name": "ATLASSIAN_EMAIL",
+          "description": "Atlassian account email",
+          "required": true
+        },
+        {
+          "name": "ATLASSIAN_API_TOKEN",
+          "description": "Atlassian API token",
+          "required": true
+        }
+      ],
+      "category": "data",
+      "docsUrl": "https://github.com/atlassian/mcp-server"
+    },
+    {
+      "id": "dynatrace",
+      "name": "Dynatrace",
+      "description": "Access logs, events, and metrics from Dynatrace monitoring platform",
+      "command": "npx",
+      "args": ["-y", "@dynatrace-oss/mcp-server"],
+      "env": {
+        "DYNATRACE_URL": "",
+        "DYNATRACE_API_TOKEN": ""
+      },
+      "envVars": [
+        {
+          "name": "DYNATRACE_URL",
+          "description": "Dynatrace environment URL",
+          "required": true
+        },
+        {
+          "name": "DYNATRACE_API_TOKEN",
+          "description": "Dynatrace API token",
+          "required": true
+        }
+      ],
+      "category": "dev",
+      "docsUrl": "https://github.com/dynatrace-oss/mcp-server"
+    },
+    {
+      "id": "shadcn",
+      "name": "shadcn/ui",
+      "description": "Browse, search, and install shadcn/ui components from registries using natural language",
+      "command": "npx",
+      "args": ["shadcn@latest", "mcp"],
+      "env": {},
+      "envVars": [],
+      "category": "dev",
+      "docsUrl": "https://ui.shadcn.com/docs/mcp"
+    }
+  ]
+}
