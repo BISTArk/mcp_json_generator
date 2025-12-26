@@ -14,49 +14,6 @@ A web app for generating Model Context Protocol (MCP) configuration files for Cu
 - **Setup Instructions** - Step-by-step guide with OS-specific file paths (macOS, Windows, Linux)
 - **Persistent Storage** - Custom MCPs saved to localStorage
 
-## Getting Started
-
-```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-```
-
-## Tech Stack
-
-- **React 18** + TypeScript
-- **Vite** for fast development
-- **Tailwind CSS v4** for styling
-- **shadcn/ui** components
-- **Lucide React** icons
-
-## Project Structure
-
-```
-src/
-├── components/
-│   ├── ui/              # shadcn/ui components
-│   ├── MCPCard.tsx      # Individual MCP card with env var inputs
-│   ├── MCPList.tsx      # Searchable/filterable MCP grid
-│   ├── AddMCPForm.tsx   # Modal to add custom MCPs
-│   ├── ConfigPreview.tsx # JSON preview with syntax highlighting
-│   └── Instructions.tsx  # Setup guide component
-├── hooks/
-│   └── useLocalStorage.ts
-├── lib/
-│   └── utils.ts         # cn() utility for class merging
-├── types/
-│   └── mcp.ts           # TypeScript interfaces
-├── utils/
-│   └── configGenerator.ts
-└── App.tsx
-```
-
 ## Adding New Preset MCPs
 
 Edit `public/mcps.json` and add an entry:
