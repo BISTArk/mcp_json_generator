@@ -1,73 +1,167 @@
-# React + TypeScript + Vite
+# MCP Config Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A web app for generating Model Context Protocol (MCP) configuration files for Cursor and VS Code. Select from 36+ popular MCP servers, configure environment variables, and export ready-to-use config files.
 
-Currently, two official plugins are available:
+![MCP Config Generator](https://img.shields.io/badge/MCP-Config%20Generator-22d3ee?style=for-the-badge)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- **36+ Preset MCPs** - Popular servers from the [MCP Registry](https://github.com/mcp) including GitHub, Notion, Supabase, Stripe, MongoDB, and more
+- **Custom MCP Support** - Add your own MCP servers with custom commands, arguments, and environment variables
+- **Multi-Editor Export** - Generate configs for both Cursor (`mcp.json`) and VS Code (`settings.json`)
+- **Environment Variables** - Configure required API keys and tokens directly in the UI
+- **Copy & Download** - One-click copy to clipboard or download as file
+- **Setup Instructions** - Step-by-step guide with OS-specific file paths (macOS, Windows, Linux)
+- **Persistent Storage** - Custom MCPs saved to localStorage
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Getting Started
 
-## Expanding the ESLint configuration
+```bash
+# Install dependencies
+npm install
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+# Start development server
+npm run dev
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Build for production
+npm run build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Tech Stack
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **React 18** + TypeScript
+- **Vite** for fast development
+- **Tailwind CSS v4** for styling
+- **shadcn/ui** components
+- **Lucide React** icons
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Project Structure
+
 ```
+src/
+├── components/
+│   ├── ui/              # shadcn/ui components
+│   ├── MCPCard.tsx      # Individual MCP card with env var inputs
+│   ├── MCPList.tsx      # Searchable/filterable MCP grid
+│   ├── AddMCPForm.tsx   # Modal to add custom MCPs
+│   ├── ConfigPreview.tsx # JSON preview with syntax highlighting
+│   └── Instructions.tsx  # Setup guide component
+├── hooks/
+│   └── useLocalStorage.ts
+├── lib/
+│   └── utils.ts         # cn() utility for class merging
+├── types/
+│   └── mcp.ts           # TypeScript interfaces
+├── utils/
+│   └── configGenerator.ts
+└── App.tsx
+```
+
+## Adding New Preset MCPs
+
+Edit `public/mcps.json` and add an entry:
+
+```json
+{
+  "id": "my-server",
+  "name": "My Server",
+  "description": "What it does",
+  "command": "npx",
+  "args": ["-y", "@my/mcp-server"],
+  "env": { "API_KEY": "" },
+  "envVars": [
+    {
+      "name": "API_KEY",
+      "description": "Your API key",
+      "required": true
+    }
+  ],
+  "category": "dev",
+  "docsUrl": "https://..."
+}
+```
+
+### Categories
+
+- `core` - Essential utilities (Filesystem, Fetch, Time)
+- `data` - Databases and data services (PostgreSQL, MongoDB, Notion)
+- `dev` - Developer tools (GitHub, Playwright, Terraform)
+- `ai` - AI/ML services (Hugging Face, Chroma, Context7)
+- `custom` - User-added MCPs
+
+## Theming
+
+The app uses CSS variables for theming. Add a class to `<html>` to switch themes:
+
+```html
+<!-- Dark mode (default) -->
+<html>
+
+<!-- Light mode -->
+<html class="light">
+
+<!-- Color variants -->
+<html class="theme-purple">
+<html class="theme-green">
+<html class="theme-orange">
+
+<!-- Combine -->
+<html class="light theme-purple">
+```
+
+## Included MCP Servers
+
+| Category | Servers |
+|----------|---------|
+| **Core** | Filesystem, Fetch, Time, Markitdown |
+| **Data** | PostgreSQL, SQLite, MongoDB, Notion, Supabase, Stripe, Elasticsearch, Neon, Google Drive, Slack, Todoist, Monday.com, Atlassian, Apify, Firecrawl |
+| **Dev** | GitHub, GitLab, Playwright, Puppeteer, Sentry, Terraform, Azure DevOps, Netdata, Dynatrace, shadcn/ui |
+| **AI** | Brave Search, Memory, Sequential Thinking, Context7, Hugging Face, Chroma, EverArt |
+
+## Output Formats
+
+### Cursor (`mcp.json`)
+
+```json
+{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "your-token"
+      }
+    }
+  }
+}
+```
+
+### VS Code (`settings.json`)
+
+```json
+{
+  "mcp": {
+    "mcpServers": {
+      "github": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-github"],
+        "env": {
+          "GITHUB_PERSONAL_ACCESS_TOKEN": "your-token"
+        }
+      }
+    }
+  }
+}
+```
+
+## Config File Locations
+
+| OS | Cursor | VS Code |
+|----|--------|---------|
+| macOS | `~/.cursor/mcp.json` | `~/Library/Application Support/Code/User/settings.json` |
+| Windows | `%APPDATA%\Cursor\mcp.json` | `%APPDATA%\Code\User\settings.json` |
+| Linux | `~/.config/cursor/mcp.json` | `~/.config/Code/User/settings.json` |
+
+## License
+
+MIT
